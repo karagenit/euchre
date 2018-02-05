@@ -21,6 +21,10 @@ class Card
     end
     cards
   end
+
+  def to_s
+    @rank.to_s + ' of ' + @suit.to_s
+  end
 end
 
 ##

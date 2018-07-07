@@ -34,5 +34,7 @@ struct Choice {
 
 struct Choice* getChoices();
 void setChoiceIndices(struct Choice *choices, int index, int one, int two, int three);
+void toFile(struct Choice *choices, char *filename);
+struct Choice* fromFile(char *filename);
 
 #endif

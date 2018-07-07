@@ -46,3 +46,11 @@ void setChoiceIndices(struct Choice *choices, int index, int one, int two, int t
     choices[index].cardTwoIndex = two;
     choices[index].cardThreeIndex = three;
 }
+
+void toFile(struct Choice *choices, char *filename) {
+    // TODO: simply write values for "scores", as the rest (the indexes) are always the same.
+}
+
+struct Choice* fromFile(char *filename) {
+    // TODO
+}

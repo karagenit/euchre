@@ -20,6 +20,8 @@ struct Card {
     uint8_t rank;
 };
 
+// TODO: instead of these numbers, use #define KING 4
+
 extern struct Card cards[];
 
 #endif

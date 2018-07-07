@@ -1,5 +1,7 @@
 #include "euchre.h"
 
 void main() {
-    printf("%d\n", cards[1].rank);
+    struct Choice *choices = getChoices();
+    printf("%d\n", choices[0].scores[0]);
+    free(choices);
 }

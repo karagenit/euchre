@@ -2,8 +2,12 @@
 #define _CHOICES_H_
 
 #include <stdint.h>
+#include <stdlib.h>
+
+#include "cards.h"
 
 #define BASE_VALUE 10000
+#define CHOICES 12721 // (1) + (24) + (24 * 23) + (24 * 23 * 22)
 
 /* This struct represents a possible "table state" i.e. what 
  * has already been played, and has values stored for each
@@ -24,7 +28,9 @@ struct Choice {
     /* Score/weight for playing each of the 24 possible cards.
      * Default value is BASE_VALUE for each.
      */
-    int scores[24];
+    int scores[CARDS];
 };
+
+struct Choice* getChoices();
 
 #endif

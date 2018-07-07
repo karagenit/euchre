@@ -17,7 +17,7 @@ Simulations are done a la Monte Carlo, with hands randomly being dealt and playi
 The "learning" is essentially a choice database, as such:
 
 |1st Card|2nd Card|3rd Card|RA Score|LA Score|...|
-|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|
 |AceB|X|X|1000|900|...|
 
 Essentially, the list of cards is what has already been played up until your turn, and the scores represent the viability of each card you could play. (In practice, the bot picks from its hand and what is legally allowed e.g. following suit).

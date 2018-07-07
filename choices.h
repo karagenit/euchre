@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "cards.h"
 
@@ -22,9 +23,9 @@ struct Choice {
     /* Indexes of each card in the global cards[] array, with -1
      * meaning no card.
      */
-    uint8_t cardOneIndex;
-    uint8_t cardTwoIndex;
-    uint8_t cardThreeIndex;
+    int8_t cardOneIndex;
+    int8_t cardTwoIndex;
+    int8_t cardThreeIndex;
     /* Score/weight for playing each of the 24 possible cards.
      * Default value is BASE_VALUE for each.
      */
@@ -32,5 +33,6 @@ struct Choice {
 };
 
 struct Choice* getChoices();
+void setChoiceIndices(struct Choice *choices, int index, int one, int two, int three);
 
 #endif

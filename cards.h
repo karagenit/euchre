@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+#define CARDS 24
+
 struct Card {
     /*
      * 1: trump

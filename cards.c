@@ -7,7 +7,7 @@
  * to malloc new Card structs every time. Also makes
  * comparing cards easier.
  */
-struct Card cards[] = {
+struct Card cards[CARDS] = {
     {1, 1}, // 1
     {1, 2}, // 2
     {1, 3}, // 3

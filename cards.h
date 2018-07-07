@@ -2,7 +2,6 @@
 #define _CARDS_H_
 
 #include <stdint.h>
-#include <stdbool.h>
 
 struct Card {
     /*

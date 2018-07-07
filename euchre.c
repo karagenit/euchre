@@ -1,5 +1,5 @@
 #include "euchre.h"
 
 void main() {
-    printf("Hi\n");
+    printf("%d\n", cards[1].rank);
 }

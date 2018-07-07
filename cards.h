@@ -5,7 +5,6 @@
 #include <stdbool.h>
 
 struct Card {
-    bool valid;
     /*
      * 1: trump
      * 2: same color as trump

@@ -1,4 +1,10 @@
-FILES = euchre.c cards.c choices.c
+FILES = cards.c choices.c
+TESTFILES = test.c $(FILES)
+SIMFILES = euchre.c $(FILES)
 
-main: $(FILES)
-	gcc -o euchre $(FILES)
+main: $(SIMFILES)
+	gcc -o euchre $(SIMFILES)
+
+test: $(TESTFILES)
+	gcc -o test $(TESTFILES)
+	./test

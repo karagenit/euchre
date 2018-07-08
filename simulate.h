@@ -16,22 +16,8 @@ typedef int Hand[HAND_SIZE];
 
 typedef Hand Hands[HAND_CNT];
 
-typedef struct Play {
-    /* Card #s of the previous 0-3 cards
-     * that were played in this trick.
-     */
-    int8_t previousCardIndices[3];
-    /* Card # of the card that was played here.
-     */
-    int8_t cardIndex;
-    /* Whether this play was for team A (as opposed
-     * to team B).
-     */
-    bool teamA; // just do cards[4], teamALead bool
-} Play;
-
 typedef struct Trick {
-    Play plays[HAND_CNT]; // winner is highest trump then highest of lead suit
+    int8_t cardIndices[HAND_CNT];
     bool teamAWon;
 } Trick;
 
@@ -42,7 +28,7 @@ void initHands(Hands hands);
 void initDecisions(Decisions decisions);
 void simulateHands(Hands hands, Decisions decisions);
 void simulateHand(Hands hands, Trick *trick);
-void simulatePlay(Hand hand, Play *play);
+void simulatePlay(Hand hand, Trick *trick);
 int getTeamAPoints(Decisions decisions);
 
 #endif

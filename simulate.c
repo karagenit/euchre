@@ -26,7 +26,7 @@ void simulateHands(Hands hands, Decisions decisions) {}
 
 void simulateHand(Hands hands, Trick *trick) {}
 
-void simulatePlay(Hand hand, Play *play) {}
+void simulatePlay(Hand hand, Trick *trick) {}
 
 int getTeamAPoints(Decisions decisions) {
     int teamAScore = 0;

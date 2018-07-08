@@ -1,3 +1,5 @@
 #include "euchre.h"
 
-void main() {}
+void main() {
+    srand(time(NULL));
+}

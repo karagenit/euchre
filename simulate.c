@@ -18,7 +18,33 @@ void simulate(Choices choices) {
     // update choices scores
 }
 
-void initHands(Hands hands) {}
+void initHands(Hands hands) {
+    // set all hands to -1
+    for (int i = 0; i < HAND_CNT * HAND_SIZE; i++) {
+        int row = i / HAND_SIZE;
+        int col = i % HAND_SIZE;
+        hands[row][col] = -1;
+    }
+    // create array for shuffled cards
+    int shuffled[CARDS];
+    for (int i = 0; i < CARDS; i++) {
+        shuffled[i] = -1;
+    }
+    // shuffle cards
+    for (int card = 0; card < CARDS; card++) {
+        int idx = rand() % CARDS; // 0 - 23
+        while (shuffled[idx] != -1) {
+            idx = (idx + 1) % CARDS;
+        }
+        shuffled[idx] = card;
+    }
+    // set hands to first 20 of shuffled
+    for (int i = 0; i < HAND_CNT * HAND_SIZE; i++) {
+        int row = i / HAND_SIZE;
+        int col = i % HAND_SIZE;
+        hands[row][col] = shuffled[i];
+    }
+}
 
 void initDecisions(Decisions decisions) {}
 

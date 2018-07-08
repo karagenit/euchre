@@ -1,6 +1,7 @@
 #ifndef _SIMULATE_H_
 #define _SIMULATE_H_
 
+#include <stdlib.h>
 #include <stdint.h>
 #include <stdbool.h>
 

@@ -5,7 +5,7 @@
 
 #define CARDS 24
 
-struct Card {
+typedef struct Card {
     /*
      * 1: trump
      * 2: same color as trump
@@ -18,10 +18,10 @@ struct Card {
      * 1 - 8
      */
     uint8_t rank;
-};
+} Card;
 
 // TODO: instead of these numbers, use #define KING 4
 
-extern struct Card cards[];
+extern Card cards[];
 
 #endif

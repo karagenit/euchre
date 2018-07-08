@@ -1,4 +1,4 @@
-FILES = cards.c choices.c
+FILES = cards.c choices.c simulate.c
 TESTFILES = test.c $(FILES)
 SIMFILES = euchre.c $(FILES)
 
@@ -7,7 +7,6 @@ build: $(SIMFILES)
 
 test: $(TESTFILES)
 	gcc -o test $(TESTFILES)
-	./test
 
 clean:
 	rm test euchre

@@ -1,8 +1,6 @@
 #include "choices.h"
 
-struct Choice* getChoices() {
-    struct Choice *choices = malloc(sizeof(struct Choice) * CHOICES);
-
+Choice* getChoices(Choices choices) {
     // set all base scores
     for (int i = 0; i < CHOICES; i++) {
         for (int j = 0; j < CARDS; j++) {
@@ -41,16 +39,16 @@ struct Choice* getChoices() {
     return choices;
 }
 
-void setChoiceIndices(struct Choice *choices, int index, int one, int two, int three) {
+void setChoiceIndices(Choices choices, int index, int one, int two, int three) {
     choices[index].cardOneIndex = one;
     choices[index].cardTwoIndex = two;
     choices[index].cardThreeIndex = three;
 }
 
-void toFile(struct Choice *choices, char *filename) {
+void toFile(Choices choices, char *filename) {
     // TODO: simply write values for "scores", as the rest (the indexes) are always the same.
 }
 
-struct Choice* fromFile(char *filename) {
+Choice* fromFile(char *filename) {
     // TODO
 }

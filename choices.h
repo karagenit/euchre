@@ -17,9 +17,9 @@
  *
  * Technically, instead of storing cardIndexes (for cards[index]) we
  * could store pointers to that card, but it's easier using the indexes
- * for e.g. cross referencing Choice.values[index]. 
+ * for e.g. cross referencing Choice.values[index].
  */
-struct Choice {
+typedef struct Choice {
     /* Indexes of each card in the global cards[] array, with -1
      * meaning no card.
      */
@@ -28,13 +28,22 @@ struct Choice {
     int8_t cardThreeIndex;
     /* Score/weight for playing each of the 24 possible cards.
      * Default value is BASE_VALUE for each.
+     *
+     * Be careful of integer overflows!
      */
-    int scores[CARDS];
-};
+    uint16_t scores[CARDS];
+} Choice;
 
-struct Choice* getChoices();
-void setChoiceIndices(struct Choice *choices, int index, int one, int two, int three);
-void toFile(struct Choice *choices, char *filename);
-struct Choice* fromFile(char *filename);
+/* Note: allocating this will take approx 650 KiB of memory,
+ * so you *can* put it on the stack, but...
+ *
+ * Also note: this is an array, and thus a pointer. Treat it as such.
+ */
+typedef Choice Choices[CHOICES];
+
+Choice* getChoices(Choices choices);
+void setChoiceIndices(Choices choices, int index, int one, int two, int three);
+void toFile(Choices choices, char *filename);
+Choice* fromFile(char *filename);
 
 #endif

@@ -20,6 +20,9 @@ typedef Hand Hands[HAND_CNT];
 
 typedef struct Trick {
     CardIndex cardIndices[HAND_CNT];
+    /*
+     * Team A is Hand Indices 0 and 2 (the even indices)
+     */
     bool teamAWon;
 } Trick;
 
@@ -29,7 +32,8 @@ void simulate(Choices choices);
 void initHands(Hands hands);
 void initDecisions(Decisions decisions);
 void simulateHands(Hands hands, Decisions decisions);
-void simulateHand(Hands hands, Trick *trick);
+void simulateHand(Hands hands, Trick *trick, int leadingHand);
+int getWinningCardIndex(CardIndex playedCards[HAND_CNT]); // TODO: typedef CardIndex Table[CNT]?
 void simulatePlay(Hand hand, Trick *trick);
 /*
  * WARNING: modifies the Hand array (replaces invalid plays

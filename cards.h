@@ -20,6 +20,7 @@ typedef struct Card {
     /*
      * Right, Left, Ace, King, Queen, Jack (?), 10, 9
      * 1 - 8
+     * TODO: make ranks greatest to least? (8 - 1) This seems more logical.
      */
     Rank rank;
 } Card;

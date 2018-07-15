@@ -1,5 +1,19 @@
 #include "test.h"
 
+void test_getWinningCardIndex() {
+    CardIndex cardsA[HAND_CNT] = { 7, 8, 9, 10 };
+    assert(getWinningCardIndex(cardsA) == 0);
+
+    CardIndex cardsB[HAND_CNT] = { 7, 12, 18, 19 };
+    assert(getWinningCardIndex(cardsB) == 0);
+
+    CardIndex cardsC[HAND_CNT] = { 11, 10, 9, 8 };
+    assert(getWinningCardIndex(cardsC) == 3);
+
+    CardIndex cardsD[HAND_CNT] = { 7, 8, 1, 10 };
+    assert(getWinningCardIndex(cardsD) == 2);
+}
+
 void test_simulatePlay() {
     Hand hand = {1, 1, 1, 2, 2};
     Decisions decisions;
@@ -63,6 +77,7 @@ int main() {
     test_initDecisions();
     test_getValidPlays();
     test_simulatePlay();
+    test_getWinningCardIndex();
 
     printf("Tests passed.\n");
     return 0;

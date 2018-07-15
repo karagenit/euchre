@@ -55,9 +55,39 @@ void initDecisions(Decisions decisions) {
     }
 }
 
-void simulateHands(Hands hands, Decisions decisions) {}
+void simulateHands(Hands hands, Decisions decisions) {
+    // leading hand starts at index 0, moves to whoever wins each hand
+}
 
-void simulateHand(Hands hands, Trick *trick) {}
+void simulateHand(Hands hands, Trick *trick, int leadingHand) {
+    for (int i = 0; i < HAND_CNT; i++) {
+        int idx = (i + leadingHand) % HAND_CNT;
+        simulatePlay(hands[idx], trick);
+    }
+    // find winning card in trick->cardIndices, if
+    // index is even set teamAWon to true.
+}
+
+int getWinningCardIndex(CardIndex playedCards[HAND_CNT]) {
+    // "highest" suit - starts as lead suit but may be overridden by trump suit
+    Suit highestSuit = cards[playedCards[0]].suit;
+    Rank highestRank = cards[playedCards[0]].rank;
+    int index = 0;
+
+    // we can skip the first card here
+    for (int i = 1; i < HAND_CNT; i++) {
+        if (cards[playedCards[i]].suit == 1) {
+            highestSuit = 1;
+        }
+        if (cards[playedCards[i]].suit == highestSuit) {
+            if (cards[playedCards[i]].rank < highestRank) {
+                index = i;
+                highestRank = cards[playedCards[i]].rank;
+            }
+        }
+    }
+    return index;
+}
 
 void simulatePlay(Hand hand, Trick *trick) {
     // get valid plays

@@ -1,5 +1,18 @@
 #include "test.h"
 
+void test_updateChoices() {
+    Choices choices;
+    initChoices(choices);
+    Decisions decisions;
+    initDecisions(decisions);
+    Hands hands = { {0,0,0,0,0}, {9,9,9,9,9}, {9,9,9,9,9}, {9,9,9,9,9} };
+    
+    simulateHands(hands, decisions);
+    updateChoices(choices, decisions);
+
+    assert(choices[0].scores[0] == 10);
+}
+
 void test_toFile() {
     Choices choices;
     initChoices(choices);
@@ -17,8 +30,8 @@ void test_findChoiceIndex() {
     Choices choices;
     initChoices(choices);
 
-    assert(findChoiceIndex(choices, -1, -1, -1) == 0);
-    assert(findChoiceIndex(choices, 0, -1, -1) == 1);
+    assert(findChoice(choices, -1, -1, -1) == choices); // pointer arithmetic
+    assert(findChoice(choices, 0, -1, -1) == choices + 1);
 }
 
 void test_simulateHands() {
@@ -130,6 +143,7 @@ int main() {
     test_simulateHands();
     test_findChoiceIndex();
     test_toFile();
+    //test_updateChoices();
 
     printf("Tests passed.\n");
     return 0;

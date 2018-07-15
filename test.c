@@ -1,5 +1,22 @@
 #include "test.h"
 
+void test_simulatePlay() {
+    Hand hand = {1, 1, 1, 2, 2};
+    Decisions decisions;
+    initDecisions(decisions);
+
+    simulatePlay(hand, &(decisions[0]));
+
+    int emptyCounts = 0;
+    for (int i = 0; i < HAND_SIZE; i++) {
+        if (hand[i] == -1) {
+            emptyCounts++;
+        }
+    }
+    assert(emptyCounts == 1);
+    assert(decisions[0].cardIndices[0] == 1 || decisions[0].cardIndices[0] == 2);
+}
+
 int main() {
     srand(time(NULL));
 
@@ -32,6 +49,8 @@ int main() {
     assert(hand[0] == 1);
     getValidPlays(hand, 2);
     assert(hand[0] == -1);
+
+    test_simulatePlay();
 
     printf("Tests passed.\n");
     return 0;

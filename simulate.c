@@ -61,10 +61,24 @@ void simulateHand(Hands hands, Trick *trick) {}
 
 void simulatePlay(Hand hand, Trick *trick) {
     // get valid plays
+    Hand plays;
+    memcpy(plays, hand, HAND_SIZE);
+    getValidPlays(plays, trick->cardIndices[0]);
 
     // randomly select one
+    int idx = rand() % HAND_SIZE;
+    while (plays[idx] == -1) {
+        idx = (idx + 1) % HAND_SIZE;
+    }
 
     // remove card from our hand, put into trick history
+    for (int i = 0; i < HAND_CNT; i++) {
+        if (trick->cardIndices[i] == -1) {
+            trick->cardIndices[i] = plays[idx];
+            break;
+        }
+    }
+    hand[idx] = -1;
 }
 
 void getValidPlays(Hand hand, int8_t leadSuit) {

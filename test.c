@@ -17,7 +17,8 @@ void test_simulateHand() {
     initDecisions(decisions);
 
     simulateHand(hands, &(decisions[0]), 0);
-    assert(decisions[0].teamAWon);
+    // we can't test this, as teamAWon is set in simulateHands not simulateHand
+    //assert(decisions[0].teamAWon);
     assert(decisions[0].cardIndices[0] == 0);
     assert(decisions[0].cardIndices[1] == 9);
 }
@@ -104,7 +105,7 @@ int main() {
     test_getValidPlays();
     test_simulatePlay();
     test_getWinningCardIndex();
-    //test_simulateHand();
+    test_simulateHand();
     //test_simulateHands();
 
     printf("Tests passed.\n");

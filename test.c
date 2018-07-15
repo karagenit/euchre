@@ -24,6 +24,15 @@ int main() {
     initDecisions(decisions);
     assert(decisions[0].cardIndices[0] == -1);
 
+    Hand hand = { 1, 1, 1, 1, 1 };
+    assert(hand[0] == 1);
+    getValidPlays(hand, -1);
+    assert(hand[0] == 1);
+    getValidPlays(hand, 1);
+    assert(hand[0] == 1);
+    getValidPlays(hand, 2);
+    assert(hand[0] == -1);
+
     printf("Tests passed.\n");
     return 0;
 }

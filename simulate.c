@@ -59,7 +59,24 @@ void simulateHands(Hands hands, Decisions decisions) {}
 
 void simulateHand(Hands hands, Trick *trick) {}
 
-void simulatePlay(Hand hand, Trick *trick) {}
+void simulatePlay(Hand hand, Trick *trick) {
+    // get valid plays
+
+    // randomly select one
+
+    // remove card from our hand, put into trick history
+}
+
+void getValidPlays(Hand hand, int8_t leadSuit) {
+    if (leadSuit == -1) {
+        return;
+    }
+    for (int i = 0; i < HAND_SIZE; i++) {
+        if (cards[hand[i]].suit != leadSuit) {
+            hand[i] = -1;
+        }
+    }
+}
 
 int getTeamAPoints(Decisions decisions) {
     int teamAScore = 0;

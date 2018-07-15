@@ -30,6 +30,11 @@ void initDecisions(Decisions decisions);
 void simulateHands(Hands hands, Decisions decisions);
 void simulateHand(Hands hands, Trick *trick);
 void simulatePlay(Hand hand, Trick *trick);
+/*
+ * WARNING: modifies the Hand array (replaces invalid plays
+ * with -1) so you likely want to clone your Hand and pass that.
+ */
+void getValidPlays(Hand hand, int8_t leadSuit);
 int getTeamAPoints(Decisions decisions);
 
 #endif

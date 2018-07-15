@@ -23,9 +23,7 @@ typedef struct Choice {
     /* Indexes of each card in the global cards[] array, with -1
      * meaning no card.
      */
-    CardIndex cardOneIndex;
-    CardIndex cardTwoIndex;
-    CardIndex cardThreeIndex;
+    CardIndex playedCards[3];
     /* Score/weight for playing each of the 24 possible cards.
      * Default value is BASE_VALUE for each.
      *
@@ -42,7 +40,7 @@ typedef struct Choice {
 typedef Choice Choices[CHOICES];
 
 Choice* getChoices(Choices choices);
-void setChoiceIndices(Choices choices, int index, int one, int two, int three);
+void setChoiceIndices(Choice *choice, int one, int two, int three);
 void toFile(Choices choices, char *filename);
 Choice* fromFile(char *filename);
 

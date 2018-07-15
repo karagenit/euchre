@@ -59,7 +59,7 @@ void test_getChoices() {
     getChoices(choices); // TODO: rename init
 
     assert(choices[0].scores[0] == BASE_VALUE);
-    assert(choices[0].cardOneIndex == -1);
+    assert(choices[0].playedCards[0] == -1);
 }
 
 void test_initHands() {

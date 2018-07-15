@@ -14,7 +14,7 @@
 // number of hands i.e. number of players, number of plays per trick
 #define HAND_CNT 4
 
-typedef int Hand[HAND_SIZE];
+typedef int8_t Hand[HAND_SIZE];
 
 typedef Hand Hands[HAND_CNT];
 

@@ -5,6 +5,10 @@
 
 #define CARDS 24
 
+typedef int8_t CardIndex;
+typedef int8_t Suit;
+typedef int8_t Rank;
+
 typedef struct Card {
     /*
      * 1: trump
@@ -12,12 +16,12 @@ typedef struct Card {
      * 3: off suit
      * 4: off suit
      */
-    int8_t suit;
+    Suit suit;
     /*
      * Right, Left, Ace, King, Queen, Jack (?), 10, 9
      * 1 - 8
      */
-    int8_t rank;
+    Rank rank;
 } Card;
 
 // TODO: instead of these numbers, use #define KING 4

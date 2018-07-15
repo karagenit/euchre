@@ -14,12 +14,12 @@
 // number of hands i.e. number of players, number of plays per trick
 #define HAND_CNT 4
 
-typedef int8_t Hand[HAND_SIZE];
+typedef CardIndex Hand[HAND_SIZE];
 
 typedef Hand Hands[HAND_CNT];
 
 typedef struct Trick {
-    int8_t cardIndices[HAND_CNT];
+    CardIndex cardIndices[HAND_CNT];
     bool teamAWon;
 } Trick;
 
@@ -35,7 +35,7 @@ void simulatePlay(Hand hand, Trick *trick);
  * WARNING: modifies the Hand array (replaces invalid plays
  * with -1) so you likely want to clone your Hand and pass that.
  */
-void getValidPlays(Hand hand, int8_t leadSuit);
+void getValidPlays(Hand hand, Suit leadSuit);
 int getTeamAPoints(Decisions decisions);
 
 #endif

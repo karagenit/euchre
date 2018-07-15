@@ -23,9 +23,9 @@ typedef struct Choice {
     /* Indexes of each card in the global cards[] array, with -1
      * meaning no card.
      */
-    int8_t cardOneIndex;
-    int8_t cardTwoIndex;
-    int8_t cardThreeIndex;
+    CardIndex cardOneIndex;
+    CardIndex cardTwoIndex;
+    CardIndex cardThreeIndex;
     /* Score/weight for playing each of the 24 possible cards.
      * Default value is BASE_VALUE for each.
      *

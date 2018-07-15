@@ -81,7 +81,7 @@ void simulatePlay(Hand hand, Trick *trick) {
     hand[idx] = -1;
 }
 
-void getValidPlays(Hand hand, int8_t leadSuit) {
+void getValidPlays(Hand hand, Suit leadSuit) {
     if (leadSuit == -1) {
         return;
     }

@@ -40,7 +40,7 @@ typedef struct Choice {
 typedef Choice Choices[CHOICES];
 
 void initChoices(Choices choices);
-void setChoiceIndices(Choice *choice, int one, int two, int three); // TODO use CardIndex typedef
+void setChoiceIndices(Choice *choice, CardIndex one, CardIndex two, CardIndex three);
 // TODO: easier to return Choice* ?
 int findChoiceIndex(Choices choices, CardIndex one, CardIndex two, CardIndex three);
 void toFile(Choices choices, char *filename);

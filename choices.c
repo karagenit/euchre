@@ -37,7 +37,7 @@ void initChoices(Choices choices) {
     }
 }
 
-void setChoiceIndices(Choice *choice, int one, int two, int three) {
+void setChoiceIndices(Choice *choice, CardIndex one, CardIndex two, CardIndex three) {
     choice->playedCards[0] = one;
     choice->playedCards[1] = two;
     choice->playedCards[2] = three;

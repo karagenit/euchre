@@ -54,10 +54,37 @@ int findChoiceIndex(Choices choices, CardIndex one, CardIndex two, CardIndex thr
     return -1;
 }
 
+// TODO: write to stderr, return -1 on failure
 void toFile(Choices choices, char *filename) {
-    // TODO: simply write values for "scores", as the rest (the indexes) are always the same.
+    FILE *file = fopen(filename, "w");
+
+    if (file == NULL) {
+        printf("Error writing file.\n");
+        return;
+    }
+
+    for (int i = 0; i < CHOICES; i++) {
+        for (int j = 0; j < CARDS; j++) {
+            putw(choices[i].scores[j], file);
+        }
+    }
+
+    fclose(file);
 }
 
-Choice* fromFile(char *filename) {
-    // TODO
+void fromFile(Choices choices, char *filename) {
+    FILE *file = fopen(filename, "r");
+
+    if (file == NULL) {
+        printf("Error reading file.\n");
+        return;
+    }
+
+    for (int i = 0; i < CHOICES; i++) {
+        for (int j = 0; j < CARDS; j++) {
+            choices[i].scores[j] = getw(file);
+        }
+    }
+
+    fclose(file);
 }

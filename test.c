@@ -1,5 +1,18 @@
 #include "test.h"
 
+void test_toFile() {
+    Choices choices;
+    initChoices(choices);
+
+    choices[0].scores[0] = 2;
+    toFile(choices, "test_choices.db");
+    
+    choices[0].scores[0] = 0;
+    fromFile(choices, "test_choices.db");
+    
+    assert(choices[0].scores[0] == 2);
+}
+
 void test_findChoiceIndex() {
     Choices choices;
     initChoices(choices);
@@ -116,6 +129,7 @@ int main() {
     test_simulateHand();
     test_simulateHands();
     test_findChoiceIndex();
+    test_toFile();
 
     printf("Tests passed.\n");
     return 0;

@@ -44,6 +44,6 @@ void setChoiceIndices(Choice *choice, CardIndex one, CardIndex two, CardIndex th
 // TODO: easier to return Choice* ?
 int findChoiceIndex(Choices choices, CardIndex one, CardIndex two, CardIndex three);
 void toFile(Choices choices, char *filename);
-Choice* fromFile(char *filename);
+void fromFile(Choices choices, char *filename);
 
 #endif

@@ -45,6 +45,17 @@ void setChoiceIndices(Choice *choice, int one, int two, int three) {
     choice->playedCards[2] = three;
 }
 
+int findChoiceIndex(Choices choices, CardIndex one, CardIndex two, CardIndex three) {
+    for (int i = 0; i < CHOICES; i++) {
+        if (choices[i].playedCards[0] == one &&
+            choices[i].playedCards[1] == two &&
+            choices[i].playedCards[2] == three) {
+                return i;
+        }
+    }
+    return -1;
+}
+
 void toFile(Choices choices, char *filename) {
     // TODO: simply write values for "scores", as the rest (the indexes) are always the same.
 }

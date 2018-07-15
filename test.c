@@ -1,5 +1,13 @@
 #include "test.h"
 
+void test_findChoiceIndex() {
+    Choices choices;
+    getChoices(choices);
+
+    assert(findChoiceIndex(choices, -1, -1, -1) == 0);
+    assert(findChoiceIndex(choices, 0, -1, -1) == 1);
+}
+
 void test_simulateHands() {
     Hands hands = { {0,0,0,0,0}, {9,9,9,9,9}, {9,9,9,9,9}, {9,9,9,9,9} };
     Decisions decisions;
@@ -107,6 +115,7 @@ int main() {
     test_getWinningCardIndex();
     test_simulateHand();
     test_simulateHands();
+    test_findChoiceIndex();
 
     printf("Tests passed.\n");
     return 0;

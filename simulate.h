@@ -18,12 +18,15 @@ typedef CardIndex Hand[HAND_SIZE];
 
 typedef Hand Hands[HAND_CNT];
 
+/*
+ * Card indices are stored in the order they were played, but
+ * winning/leading hand reference which hand (aka which player)
+ * played the leading/winning card.
+ */
 typedef struct Trick {
     CardIndex cardIndices[HAND_CNT];
-    /*
-     * Team A is Hand Indices 0 and 2 (the even indices)
-     */
-    bool teamAWon;
+    int winningHand; // 0 or 2 means A
+    int leadingHand; // 0 or 2 means A
 } Trick;
 
 typedef Trick Decisions[HAND_SIZE];
@@ -32,7 +35,7 @@ void simulate(Choices choices);
 void initHands(Hands hands);
 void initDecisions(Decisions decisions);
 void simulateHands(Hands hands, Decisions decisions);
-void simulateHand(Hands hands, Trick *trick, int leadingHand);
+void simulateHand(Hands hands, Trick *trick);
 int getWinningCardIndex(CardIndex playedCards[HAND_CNT]); // TODO: typedef CardIndex Table[CNT]?
 void simulatePlay(Hand hand, Trick *trick);
 /*

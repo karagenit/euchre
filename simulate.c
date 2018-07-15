@@ -48,27 +48,29 @@ void initHands(Hands hands) {
 
 void initDecisions(Decisions decisions) {
     for (int i = 0; i < HAND_SIZE; i++) {
-        decisions[i].teamAWon = false;
+        decisions[i].winningHand = -1;
+        decisions[i].leadingHand = -1;
         for (int j = 0; j < HAND_CNT; j++) {
             decisions[i].cardIndices[j] = -1;
         }
     }
+    decisions[0].leadingHand = 0;
 }
 
 void simulateHands(Hands hands, Decisions decisions) {
     // leading hand starts at index 0, moves to whoever wins each hand
-    int leadingHand = 0;
     for (int i = 0; i < HAND_SIZE; i++) {
-        simulateHand(hands, &(decisions[i]), leadingHand);
-        int winningHand = getWinningCardIndex(decisions[i].cardIndices);
-        decisions[i].teamAWon = (winningHand % 2 == 0);
-        leadingHand = winningHand;
+        simulateHand(hands, &(decisions[i]));
+        decisions[i].winningHand = getWinningCardIndex(decisions[i].cardIndices);
+        if (i < HAND_SIZE - 1) {
+            decisions[i+1].leadingHand = decisions[i].winningHand;
+        }
     }
 }
 
-void simulateHand(Hands hands, Trick *trick, int leadingHand) {
+void simulateHand(Hands hands, Trick *trick) {
     for (int i = 0; i < HAND_CNT; i++) {
-        int idx = (i + leadingHand) % HAND_CNT;
+        int idx = (i + trick->leadingHand) % HAND_CNT;
         simulatePlay(hands[idx], trick);
     }
 }
@@ -153,9 +155,10 @@ int getTeamAPoints(Decisions decisions) {
 
     // TODO: build this into the Decisions struct + simulateHand function?
     for (int i = 0; i < 5; i++) {
-        if (decisions[i].teamAWon) {
-            teamAScore++;
-        }
+        bool leaderWon = (decisions[i].winningHand % 2) == (decisions[i].leadingHand % 2);
+//        if (!(leader) {
+//            teamAScore++;
+//        }
     }
 
     switch(teamAScore) {

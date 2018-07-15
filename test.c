@@ -7,7 +7,7 @@ void test_simulateHands() {
 
     simulateHands(hands, decisions);
     for (int i = 0; i < HAND_SIZE; i++) {
-        assert(decisions[i].teamAWon);
+        assert(decisions[i].winningHand == 0);
     }
 }
 
@@ -16,7 +16,7 @@ void test_simulateHand() {
     Decisions decisions;
     initDecisions(decisions);
 
-    simulateHand(hands, &(decisions[0]), 0);
+    simulateHand(hands, &(decisions[0]));
     // we can't test this, as teamAWon is set in simulateHands not simulateHand
     //assert(decisions[0].teamAWon);
     assert(decisions[0].cardIndices[0] == 0);

@@ -22,7 +22,7 @@ typedef struct Trick {
     bool teamAWon;
 } Trick;
 
-typedef Trick Decisions[5];
+typedef Trick Decisions[HAND_SIZE];
 
 void simulate(Choices choices);
 void initHands(Hands hands);

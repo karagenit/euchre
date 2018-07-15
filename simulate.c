@@ -46,7 +46,14 @@ void initHands(Hands hands) {
     }
 }
 
-void initDecisions(Decisions decisions) {}
+void initDecisions(Decisions decisions) {
+    for (int i = 0; i < HAND_SIZE; i++) {
+        decisions[i].teamAWon = false;
+        for (int j = 0; j < HAND_CNT; j++) {
+            decisions[i].cardIndices[j] = -1;
+        }
+    }
+}
 
 void simulateHands(Hands hands, Decisions decisions) {}
 

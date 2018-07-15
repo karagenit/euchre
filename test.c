@@ -20,6 +20,10 @@ int main() {
 //  }
     assert(hands[0][0] != -1);
 
+    Decisions decisions;
+    initDecisions(decisions);
+    assert(decisions[0].cardIndices[0] == -1);
+
     printf("Tests passed.\n");
     return 0;
 }

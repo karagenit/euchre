@@ -7,7 +7,7 @@
 
 #include "cards.h"
 
-#define BASE_VALUE 10000
+#define BASE_VALUE 0
 #define CHOICES 12721 // (1) + (24) + (24 * 23) + (24 * 23 * 22)
 
 /* This struct represents a possible "table state" i.e. what 
@@ -31,7 +31,7 @@ typedef struct Choice {
      *
      * Be careful of integer overflows!
      */
-    uint16_t scores[CARDS];
+    int16_t scores[CARDS];
 } Choice;
 
 /* Note: allocating this will take approx 650 KiB of memory,

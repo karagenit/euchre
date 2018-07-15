@@ -7,5 +7,6 @@
 
 #include "cards.h"
 #include "choices.h"
+#include "simulate.h"
 
 #endif

@@ -12,12 +12,12 @@ typedef struct Card {
      * 3: off suit
      * 4: off suit
      */
-    uint8_t suit;
+    int8_t suit;
     /*
      * Right, Left, Ace, King, Queen, Jack (?), 10, 9
      * 1 - 8
      */
-    uint8_t rank;
+    int8_t rank;
 } Card;
 
 // TODO: instead of these numbers, use #define KING 4

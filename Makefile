@@ -9,4 +9,4 @@ test: $(TESTFILES)
 	gcc -o test $(TESTFILES)
 
 clean:
-	rm test euchre
+	rm test euchre test_choices.db

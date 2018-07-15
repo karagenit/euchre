@@ -6,7 +6,7 @@ build: $(SIMFILES)
 	gcc -o euchre $(SIMFILES)
 
 test: $(TESTFILES)
-	gcc -o test $(TESTFILES)
+	gcc -g -o test $(TESTFILES)
 
 clean:
 	rm test euchre test_choices.db

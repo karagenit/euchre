@@ -106,7 +106,7 @@ int main() {
     test_simulatePlay();
     test_getWinningCardIndex();
     test_simulateHand();
-    //test_simulateHands();
+    test_simulateHands();
 
     printf("Tests passed.\n");
     return 0;

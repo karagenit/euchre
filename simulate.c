@@ -117,14 +117,20 @@ void simulatePlay(Hand hand, Trick *trick) {
 }
 
 void getValidPlays(Hand hand, Suit leadSuit) {
+    // we lead, we can play any card
     if (leadSuit == -1) {
         return;
     }
+
     // if we don't have any of the lead suit, we can play any card
     bool noneOfSuit = true;
     for (int i = 0; i < HAND_SIZE; i++) {
+        if (hand[i] == -1) {
+            continue;
+        }
         if (cards[hand[i]].suit == leadSuit) {
             noneOfSuit = false;
+            break;
         }
     }
     if (noneOfSuit) {
@@ -133,6 +139,9 @@ void getValidPlays(Hand hand, Suit leadSuit) {
 
     // remove non-valid cards
     for (int i = 0; i < HAND_SIZE; i++) {
+        if (hand[i] == -1) {
+            continue;
+        }
         if (cards[hand[i]].suit != leadSuit) {
             hand[i] = -1;
         }

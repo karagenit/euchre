@@ -6,7 +6,9 @@ void main() {
     Choices choices;
     initChoices(choices);
 
-    for (int i = 0; i < 100000; i++) {
+    for (int i = 0; i < 1000000; i++) {
         simulate(choices);
     }
+
+    toFile(choices, "data.db");
 }

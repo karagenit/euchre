@@ -5,7 +5,7 @@ void test_updateChoices() {
     initChoices(choices);
     Decisions decisions;
     initDecisions(decisions);
-    Hands hands = { {0,0,0,0,0}, {9,9,9,9,9}, {9,9,9,9,9}, {9,9,9,9,9} };
+    Hands hands = { {0,0,0,0,0}, {7,7,7,7,7}, {8,8,8,8,8}, {9,9,9,9,9} };
     
     simulateHands(hands, decisions);
     updateChoices(choices, decisions);
@@ -35,7 +35,7 @@ void test_findChoiceIndex() {
 }
 
 void test_simulateHands() {
-    Hands hands = { {0,0,0,0,0}, {9,9,9,9,9}, {9,9,9,9,9}, {9,9,9,9,9} };
+    Hands hands = { {0,0,0,0,0}, {7,7,7,7,7}, {8,8,8,8,8}, {9,9,9,9,9} };
     Decisions decisions;
     initDecisions(decisions);
 
@@ -46,7 +46,7 @@ void test_simulateHands() {
 }
 
 void test_simulateHand() {
-    Hands hands = { {0,0,0,0,0}, {9,9,9,9,9}, {9,9,9,9,9}, {9,9,9,9,9} };
+    Hands hands = { {0,0,0,0,0}, {7,7,7,7,7}, {8,8,8,8,8}, {9,9,9,9,9} };
     Decisions decisions;
     initDecisions(decisions);
 
@@ -54,7 +54,7 @@ void test_simulateHand() {
     // we can't test this, as teamAWon is set in simulateHands not simulateHand
     //assert(decisions[0].teamAWon);
     assert(decisions[0].cardIndices[0] == 0);
-    assert(decisions[0].cardIndices[1] == 9);
+    assert(decisions[0].cardIndices[1] == 7);
 }
 
 void test_getWinningCardIndex() {
@@ -143,7 +143,7 @@ int main() {
     test_simulateHands();
     test_findChoiceIndex();
     test_toFile();
-    //test_updateChoices();
+    test_updateChoices();
 
     printf("Tests passed.\n");
     return 0;

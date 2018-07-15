@@ -32,6 +32,7 @@ typedef struct Trick {
 typedef Trick Decisions[HAND_SIZE];
 
 void simulate(Choices choices);
+void updateChoices(Choices choices, Decisions decisions);
 void initHands(Hands hands);
 void initDecisions(Decisions decisions);
 void simulateHands(Hands hands, Decisions decisions);

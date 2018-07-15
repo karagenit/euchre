@@ -12,10 +12,35 @@ void simulate(Choices choices) {
     // TODO: use previous success/failure of choices to determine decision
     simulateHands(hands, decisions);
 
-    // teamBPoints = -teamAPoints;
+    updateChoices(choices, decisions);
+}
+
+void updateChoices(Choices choices, Decisions decisions) {
     int teamAPoints = getTeamAPoints(decisions);
 
     // update choices scores
+    for (int i = 0; i < HAND_SIZE; i++) {
+        int leaderPoints;
+
+        // if team A lead
+        if (decisions[i].leadingHand % 2 == 0) {
+            leaderPoints = teamAPoints;
+        } else {
+            leaderPoints = -teamAPoints;
+        }
+
+        // find choice index for each of the 4 combos
+        CardIndex firstCard = decisions[i].cardIndices[0];
+        CardIndex secondCard = decisions[i].cardIndices[1];
+        CardIndex thirdCard = decisions[i].cardIndices[2];
+        CardIndex fourthCard = decisions[i].cardIndices[3];
+
+        // TODO: check for null?
+        findChoice(choices, -1, -1, -1)->scores[firstCard] += leaderPoints;
+        findChoice(choices, firstCard, -1, -1)->scores[secondCard] -= leaderPoints;
+        findChoice(choices, firstCard, secondCard, -1)->scores[thirdCard] += leaderPoints;
+        findChoice(choices, firstCard, secondCard, thirdCard)->scores[fourthCard] += leaderPoints;
+    }
 }
 
 void initHands(Hands hands) {
@@ -156,9 +181,11 @@ int getTeamAPoints(Decisions decisions) {
     // TODO: build this into the Decisions struct + simulateHand function?
     for (int i = 0; i < 5; i++) {
         bool leaderWon = (decisions[i].winningHand % 2) == (decisions[i].leadingHand % 2);
-//        if (!(leader) {
-//            teamAScore++;
-//        }
+        bool teamALead = (decisions[i].leadingHand % 2) == 0;
+        // if either: (A lead and leader won) or (A didn't lead and leader lost)
+        if (leaderWon == teamALead) {
+            teamAScore++;
+        }
     }
 
     switch(teamAScore) {

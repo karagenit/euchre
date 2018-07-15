@@ -1,5 +1,27 @@
 #include "test.h"
 
+void test_simulateHands() {
+    Hands hands = { {0,0,0,0,0}, {9,9,9,9,9}, {9,9,9,9,9}, {9,9,9,9,9} };
+    Decisions decisions;
+    initDecisions(decisions);
+
+    simulateHands(hands, decisions);
+    for (int i = 0; i < HAND_SIZE; i++) {
+        assert(decisions[i].teamAWon);
+    }
+}
+
+void test_simulateHand() {
+    Hands hands = { {0,0,0,0,0}, {9,9,9,9,9}, {9,9,9,9,9}, {9,9,9,9,9} };
+    Decisions decisions;
+    initDecisions(decisions);
+
+    simulateHand(hands, &(decisions[0]), 0);
+    assert(decisions[0].teamAWon);
+    assert(decisions[0].cardIndices[0] == 0);
+    assert(decisions[0].cardIndices[1] == 9);
+}
+
 void test_getWinningCardIndex() {
     CardIndex cardsA[HAND_CNT] = { 7, 8, 9, 10 };
     assert(getWinningCardIndex(cardsA) == 0);
@@ -66,7 +88,11 @@ void test_getValidPlays() {
     getValidPlays(hand, 1);
     assert(hand[0] == 1);
     getValidPlays(hand, 2);
-    assert(hand[0] == -1);
+    assert(hand[0] == 1);
+
+    Hand handB = { 1, 1, 1, 1, 7 };
+    getValidPlays(handB, 2);
+    assert(handB[0] == -1);
 }
 
 int main() {
@@ -78,6 +104,8 @@ int main() {
     test_getValidPlays();
     test_simulatePlay();
     test_getWinningCardIndex();
+    //test_simulateHand();
+    //test_simulateHands();
 
     printf("Tests passed.\n");
     return 0;

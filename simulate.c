@@ -57,6 +57,13 @@ void initDecisions(Decisions decisions) {
 
 void simulateHands(Hands hands, Decisions decisions) {
     // leading hand starts at index 0, moves to whoever wins each hand
+    int leadingHand = 0;
+    for (int i = 0; i < HAND_SIZE; i++) {
+        simulateHand(hands, &(decisions[i]), leadingHand);
+        int winningHand = getWinningCardIndex(decisions[i].cardIndices);
+        decisions[i].teamAWon = (winningHand % 2 == 0);
+        leadingHand = winningHand;
+    }
 }
 
 void simulateHand(Hands hands, Trick *trick, int leadingHand) {
@@ -64,8 +71,6 @@ void simulateHand(Hands hands, Trick *trick, int leadingHand) {
         int idx = (i + leadingHand) % HAND_CNT;
         simulatePlay(hands[idx], trick);
     }
-    // find winning card in trick->cardIndices, if
-    // index is even set teamAWon to true.
 }
 
 int getWinningCardIndex(CardIndex playedCards[HAND_CNT]) {
@@ -115,6 +120,18 @@ void getValidPlays(Hand hand, Suit leadSuit) {
     if (leadSuit == -1) {
         return;
     }
+    // if we don't have any of the lead suit, we can play any card
+    bool noneOfSuit = true;
+    for (int i = 0; i < HAND_SIZE; i++) {
+        if (cards[hand[i]].suit == leadSuit) {
+            noneOfSuit = false;
+        }
+    }
+    if (noneOfSuit) {
+        return;
+    }
+
+    // remove non-valid cards
     for (int i = 0; i < HAND_SIZE; i++) {
         if (cards[hand[i]].suit != leadSuit) {
             hand[i] = -1;

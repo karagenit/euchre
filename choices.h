@@ -39,8 +39,9 @@ typedef struct Choice {
  */
 typedef Choice Choices[CHOICES];
 
-Choice* getChoices(Choices choices);
+void initChoices(Choices choices);
 void setChoiceIndices(Choice *choice, int one, int two, int three); // TODO use CardIndex typedef
+// TODO: easier to return Choice* ?
 int findChoiceIndex(Choices choices, CardIndex one, CardIndex two, CardIndex three);
 void toFile(Choices choices, char *filename);
 Choice* fromFile(char *filename);

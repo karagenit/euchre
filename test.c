@@ -2,7 +2,7 @@
 
 void test_findChoiceIndex() {
     Choices choices;
-    getChoices(choices);
+    initChoices(choices);
 
     assert(findChoiceIndex(choices, -1, -1, -1) == 0);
     assert(findChoiceIndex(choices, 0, -1, -1) == 1);
@@ -62,9 +62,9 @@ void test_simulatePlay() {
     assert(decisions[0].cardIndices[0] == 1 || decisions[0].cardIndices[0] == 2);
 }
 
-void test_getChoices() {
+void test_initChoices() {
     Choices choices;
-    getChoices(choices); // TODO: rename init
+    initChoices(choices);
 
     assert(choices[0].scores[0] == BASE_VALUE);
     assert(choices[0].playedCards[0] == -1);
@@ -107,7 +107,7 @@ void test_getValidPlays() {
 int main() {
     srand(time(NULL));
 
-    test_getChoices();
+    test_initChoices();
     test_initHands();
     test_initDecisions();
     test_getValidPlays();

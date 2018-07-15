@@ -1,6 +1,6 @@
 #include "choices.h"
 
-Choice* getChoices(Choices choices) {
+void initChoices(Choices choices) {
     // set all base scores
     for (int i = 0; i < CHOICES; i++) {
         for (int j = 0; j < CARDS; j++) {
@@ -35,8 +35,6 @@ Choice* getChoices(Choices choices) {
             }
         }
     }
-
-    return choices;
 }
 
 void setChoiceIndices(Choice *choice, int one, int two, int three) {

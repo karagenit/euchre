@@ -43,15 +43,15 @@ void setChoiceIndices(Choice *choice, CardIndex one, CardIndex two, CardIndex th
     choice->playedCards[2] = three;
 }
 
-int findChoiceIndex(Choices choices, CardIndex one, CardIndex two, CardIndex three) {
+Choice* findChoice(Choices choices, CardIndex one, CardIndex two, CardIndex three) {
     for (int i = 0; i < CHOICES; i++) {
         if (choices[i].playedCards[0] == one &&
             choices[i].playedCards[1] == two &&
             choices[i].playedCards[2] == three) {
-                return i;
+                return &(choices[i]);
         }
     }
-    return -1;
+    return NULL;
 }
 
 // TODO: write to stderr, return -1 on failure

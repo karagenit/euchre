@@ -26,10 +26,8 @@ typedef struct Choice {
     CardIndex playedCards[3];
     /* Score/weight for playing each of the 24 possible cards.
      * Default value is BASE_VALUE for each.
-     *
-     * Be careful of integer overflows!
      */
-    int16_t scores[CARDS];
+    int32_t scores[CARDS];
 } Choice;
 
 /* Note: allocating this will take approx 650 KiB of memory,
